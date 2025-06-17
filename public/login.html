@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/tabler@1.0.0-beta16/dist/css/tabler.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/tabler@1.0.0-beta16/dist/css/tabler.min.css" rel="stylesheet" />
     <style>
       body {
         background-color: #f5f7fb;
@@ -20,9 +20,9 @@
     </style>
   </head>
   <body>
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-body">
-        <h2 class="text-center mb-4">Login</h2>
+        <h2 class="h2 text-center mb-4">Login</h2>
         <form id="loginForm">
           <div class="mb-3">
             <label class="form-label">Username</label>
@@ -32,7 +32,7 @@
             <label class="form-label">Password</label>
             <input type="password" id="password" class="form-control" required />
           </div>
-          <div class="d-grid">
+          <div class="form-footer">
             <button type="submit" class="btn btn-primary w-100">Login</button>
           </div>
           <div id="errorMsg" class="text-danger mt-3 text-center" style="display: none;">
@@ -48,13 +48,11 @@
         { username: "admin", password: "admin123" }
       ];
 
-      document.getElementById('loginForm').addEventListener('submit', function (e) {
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
         e.preventDefault();
-
         const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
-
-        const user = users.find(u => u.username === username && u.password === password);
+        const user = users.find((u) => u.username === username && u.password === password);
 
         if (user) {
           localStorage.setItem("loggedIn", "true");
