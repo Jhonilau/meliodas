@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Validasi</title>
+  <link href="https://cdn.jsdelivr.net/npm/tabler@latest/dist/css/tabler.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h2 text-center mb-4">Login</h2>
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="admin">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="12345">
+      </div>
+      <div class="form-footer">
+        <button onclick="login()" class="btn btn-primary w-100">Masuk</button>
+      </div>
+      <p id="loginError" class="text-danger text-center mt-2"></p>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      // Login dummy
+      if (user === 'admin' && pass === '12345') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = "index.html";
+      } else {
+        document.getElementById('loginError').textContent = "Username atau Password salah!";
+      }
+    }
+  </script>
+</body>
+</html>
