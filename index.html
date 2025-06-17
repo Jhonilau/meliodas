@@ -36,6 +36,18 @@
     <!-- END CUSTOM FONT -->
   </head>
   <body>
+    <script>
+  if (localStorage.getItem('loggedIn') !== 'true') {
+    window.location.href = 'login.html';
+  }
+</script>
+    <button onclick="logout()" class="btn btn-outline-danger">Logout</button>
+<script>
+  function logout() {
+    localStorage.removeItem('loggedIn');
+    window.location.href = 'login.html';
+  }
+</script>
     <!-- BEGIN GLOBAL THEME SCRIPT -->
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
     <!-- END GLOBAL THEME SCRIPT -->
