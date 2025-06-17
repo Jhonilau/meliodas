@@ -1,54 +1,68 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/tabler@1.0.0-alpha.22/dist/css/tabler.min.css" rel="stylesheet">
-</head>
-<body class="d-flex flex-column justify-center align-center h-100" style="height: 100vh;">
-  <div class="container-tight">
-    <div class="card card-md">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tabler@1.0.0-beta16/dist/css/tabler.min.css" rel="stylesheet"/>
+    <style>
+      body {
+        background-color: #f5f7fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .card {
+        width: 100%;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
       <div class="card-body">
         <h2 class="text-center mb-4">Login</h2>
         <form id="loginForm">
           <div class="mb-3">
             <label class="form-label">Username</label>
-            <input type="text" name="username" class="form-control" required>
+            <input type="text" id="username" class="form-control" required />
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" required>
+            <input type="password" id="password" class="form-control" required />
           </div>
-          <div class="form-footer">
+          <div class="d-grid">
             <button type="submit" class="btn btn-primary w-100">Login</button>
           </div>
+          <div id="errorMsg" class="text-danger mt-3 text-center" style="display: none;">
+            Username atau password salah.
+          </div>
         </form>
-        <div id="errorText" class="text-danger mt-2 text-center" style="display: none;">Username atau password salah.</div>
       </div>
     </div>
-  </div>
 
-  <script>
-    const allowedUsers = [
-      { username: "jhonilau", password: "tester123" },
-      { username: "admin", password: "admin123" }
-    ];
+    <script>
+      const users = [
+        { username: "jhonilau", password: "tester123" },
+        { username: "admin", password: "admin123" }
+      ];
 
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const username = e.target.username.value.trim();
-      const password = e.target.password.value.trim();
+      document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      const user = allowedUsers.find(u => u.username === username && u.password === password);
-      if (user) {
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("username", username);
-        window.location.href = "index.html";
-      } else {
-        document.getElementById("errorText").style.display = "block";
-      }
-    });
-  </script>
-</body>
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+          localStorage.setItem("loggedIn", "true");
+          window.location.href = "index.html";
+        } else {
+          document.getElementById("errorMsg").style.display = "block";
+        }
+      });
+    </script>
+  </body>
 </html>
