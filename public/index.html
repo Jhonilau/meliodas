@@ -36,22 +36,6 @@
     <!-- END CUSTOM FONT -->
   </head>
   <body>
-  <script>
-    const username = localStorage.getItem('username');
-    if (!username) {
-      // ⛔ Belum login, redirect
-      window.location.href = "/login.html";
-    } else {
-      // ✅ Tampilkan nama user
-      document.getElementById('welcome').textContent = `Selamat datang, ${username}!`;
-    }
-
-    function logout() {
-      localStorage.removeItem('username');
-      window.location.href = "/login.html";
-    }
-  </script>
-</body>
     <!-- BEGIN GLOBAL THEME SCRIPT -->
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
     <!-- END GLOBAL THEME SCRIPT -->
