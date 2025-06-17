@@ -1,26 +1,21 @@
-<script>
-  document.getElementById('loginForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = new FormData(this);
-    const data = Object.fromEntries(form.entries());
+export default function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Metode tidak diizinkan' });
+  }
 
-    try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+  const { username, password } = req.body;
 
-      const result = await res.json();
-      console.log("API Result:", result);
+  // ✅ Data akun disimpan langsung di sini
+  const users = [
+    { username: "jhonilau", password: "tester123" },
+    { username: "charlessusanto", password: "aleng123" }
+  ];
 
-      if (res.status === 200) {
-        window.location.href = "/index.html";
-      } else {
-        document.getElementById('response').textContent = result.message;
-      }
-    } catch (err) {
-      document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
-    }
-  });
-</script>
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    return res.status(200).json({ message: `Selamat datang, ${username}!` });
+  } else {
+    return res.status(401).json({ message: 'Login gagal. Username atau password salah.' });
+  }
+}
