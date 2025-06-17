@@ -25,11 +25,11 @@
       <h2 class="h2 text-center mb-4">Login</h2>
       <div class="mb-3">
         <label class="form-label">Username</label>
-        <input type="text" id="username" class="form-control" placeholder="admin">
+        <input type="text" id="username" class="form-control">
       </div>
       <div class="mb-3">
         <label class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" placeholder="12345">
+        <input type="password" id="password" class="form-control">
       </div>
       <div class="form-footer">
         <button onclick="login()" class="btn btn-primary w-100">Masuk</button>
@@ -39,12 +39,22 @@
   </div>
 
   <script>
+    // Daftar username-password yang diperbolehkan
+    const validAccounts = [
+      { username: "admin", password: "12345" },
+      { username: "jhoni", password: "cek123" },
+      { username: "tester", password: "validasi" }
+    ];
+
     function login() {
-      const user = document.getElementById('username').value;
+      const user = document.getElementById('username').value.trim();
       const pass = document.getElementById('password').value;
 
-      // Login dummy
-      if (user === 'admin' && pass === '12345') {
+      const isValid = validAccounts.some(account => 
+        account.username === user && account.password === pass
+      );
+
+      if (isValid) {
         localStorage.setItem('loggedIn', 'true');
         window.location.href = "index.html";
       } else {
