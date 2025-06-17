@@ -1,0 +1,296 @@
+
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.3.0
+* @link https://tabler.io
+* Copyright 2018-2025 The Tabler Authors
+* Copyright 2018-2025 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bank / E-Wallet Account Checker</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler.css?1747674012" rel="stylesheet" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PLUGINS STYLES -->
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-flags.css?1747674012" rel="stylesheet" />
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-socials.css?1747674012" rel="stylesheet" />
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-payments.css?1747674012" rel="stylesheet" />
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-vendors.css?1747674012" rel="stylesheet" />
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-marketing.css?1747674012" rel="stylesheet" />
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-themes.css?1747674012" rel="stylesheet" />
+    <!-- END PLUGINS STYLES -->
+    <!-- BEGIN DEMO STYLES -->
+    <link href="https://kedaimutasi.com/cekrekening/assets/tabler/preview/css/demo.css?1747674012" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- END DEMO STYLES -->
+    <!-- BEGIN CUSTOM FONT -->
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+    </style>
+    <!-- END CUSTOM FONT -->
+  </head>
+  <body>
+    <!-- BEGIN GLOBAL THEME SCRIPT -->
+    <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
+    <!-- END GLOBAL THEME SCRIPT -->
+    <div class="page page-center">
+      <div class="container container-tight py-4">
+        <div class="card card-md">
+          <div class="card-body">
+            <h2 class="h2 text-center mb-4">Validasi Rekening Bank & E-Wallet</h2>
+            <hr>
+            <form id="validateForm" class="mb-4" autocomplete="off">
+              <div class="mb-3">
+                <label class="form-label">Pilih Bank / E-Wallet</label>
+                <select class="form-select form-control-rounded select_account" name="account_type">
+                  <optgroup label="Bank">
+                                            <option value="5LNWGQkOiLhAyBMosgp5A3hNZk9ENitVdE1YQ3liUEVVRUNPLzlZTStYRXZFN09BdTJpTTVqSEVwb2s9">BANK BRI</option>
+                                            <option value="vIwbHZmAQUCm96+KAuCbYGRGVXZXTDE1UTFIRk9Kay81T3RhTFFEamw3QjhvekJUUEdxYTU3ZEZWQXM9">BANK MANDIRI</option>
+                                            <option value="CftadEAMwtCAcgMWL+0Nt09BQWFHbE53aUdyWU5zMG5IaUZLci9DeVFLeXU5a0RoVDI1TlpUemNZQXc9">BANK BNI</option>
+                                            <option value="Gd2YNwWp/I57CMDwA+bsUnoveGdveFdnUGpmWmFDaHRzRHJZYU9sRmlLNTBORHlRYTZkUHJTcFMyZGs9">BANK BTN</option>
+                                            <option value="l53d8yHEykP7oTrNXphsKTNuNjZxTjV0ZEtmNnMyaU9BVzBUUjYrZXZVQWxmQTBtdG16ZUlVSVNZdm4rNThrWjM5aFMxVHE0UVgzd0ZXYVA=">BANK RAYA INDONESIA</option>
+                                            <option value="uV//9cnzbIoI2LPUGCMeTGlTVkZrMDFQSGN2MFJpMGtROWhJUUdNUTNVaDY5aVBOU3cvbUJwMVRMMkU9">BANK BCA</option>
+                                            <option value="NXh7XjwuMlnuOhoX0uDtBjJadWNkVGZaTW5XekMxZERWeklwMEYyWkQ1RW12eE03VzBpWmtzeTU1RlZNZjM3T1JPb1JBdnlMUlFLMHFyMlU=">BANK CIMB NIAGA</option>
+                                            <option value="NfjcG1i6B2ovV+s9Lo9GxmNLYm1sMXNnaFo2TWVxamI1QmtLL0hCb24zalZqV3p4UGVIMDFZN3ZQblk9">BANK DANAMON</option>
+                                            <option value="KgoZCQSFyufdHxPOkRPrk3YzaC8rQ3dJM3QvZGljSlZvVW9qRlQzS3A5dm9QZm9NZWM3d2ZReXJqZmM9">BANK PERMATA</option>
+                                            <option value="T3MwhzdGqbWSALpFOBbKczV3ZW9jc242bVQvaDFyRkp4RWdvWnlVWjZoN2JsZWlxWFFTaUtBRHRjbEU9">BANK PANIN</option>
+                                            <option value="9O1R4BCYe+6bL6PUSFx3S0xLaHFEV2huOEtHOFFYRU9uOG82RHFUQkRFZzRrOW1MQnp5R09XQ2dWeTQzL3h0RG1FWWZpRTZEYVJsb0FoamQ=">BANK MAYBANK INDONESIA</option>
+                                            <option value="4tCSsCmadZhIaLnMYWJpnTB0anpFc2ZsUjg2TEJ1cjFWUS96R0NUYnlCOFRSWnprRWc4QWZ4MFlrRHJlUmE2a0N4d1hMUXMyeTlWMkFxc00=">BANK HSBC INDONESIA</option>
+                                            <option value="H459u1XGfFX9kRzaNGpsv1Nsazc5RU0xQzZuUWFrSzFHK2UrYk1WYnBVZUROWWNYdmt1SVFZK3VQZ1U9">KB Bukopin</option>
+                                            <option value="o8qMjFzVUjOdasg1+xGcDUNaRnlRSEY5eDN3bW5TdmVhWjFrTncxcE84b21udkd4MThDY2JCdHZQQ009">BANK MEGA</option>
+                                            <option value="uewPqoPsxSVmP4fhtK7M0ERpamZ2N0FFakVoZ0F0MVZyU0hXM3V1WUZpUmkzYnhOQ3Bkcm51QVN1OVI3VWNMY010SmlEWnpKT1NvTTZIUHE=">BANK UOB INDONESIA</option>
+                                            <option value="buQzzU3QWtx/DLZJV/POJE5NN1RlQ3dPR2dkWGk3R0RIZm9laiszSHMzUENYbVV3LytibGhoTFFPVjhXNFlWYXFSOHVjZ25QQkJyZHZHWUQ=">BANK OCBC NISP</option>
+                                            <option value="gd4rLR02+/yC6ZmiM1WJQm0wQUpkMThVM003MSsyY0ZUSzNFRExNeGFHaVZqejFxcW03WWJVSEU2ck10NGdReENyYUFZa2F1eW9yMlovVm4=">CITIBANK INDONESIA</option>
+                                            <option value="voy2YaTGHNLUXfsgeVgOhXJpelFZWHZIa0ZXcUxNRTNKcFErZmk4bGRSOThkaHVNdTlCeWx6TThEZWZ1T2xkcG8zOGR2OXdTWE1NSDIxdDE=">BANK CCB INDONESIA</option>
+                                            <option value="wwpH25sSCFri+sU9G3ZdFUR1S1o4Q2l5UnlIcU9DQWdaTW0yNnB2VXNSVzVMNWtNNERJcmNLaThDcnk2amRQMFlNKzkxaWp1TEJBMkZvL2g=">BANK ARTHA GRAHA</option>
+                                            <option value="M7cRnhec1vr+RgkIoW3OXXd1V3BkUWk0Y2V3alBTbXFpTVJteTBDQWxHRHVmYllob0FoT0w3bXZwRVUvbWloOVJENExmdTgvaGsvdzExOXc=">MUFG BANK, LTD</option>
+                                            <option value="RrFOz1cFiL/sztbagPC0MlRQc3BxZzA1QkhvVnZlNU9YYzdCV1FQaTV0VWt2WDNjR3p3bjVwOHlqOVE9">BANK DBS</option>
+                                            <option value="OsaSCWuVB8t4UoonVsX7TkJnTTJGUjA0bW1XMlpHVDhmYllpeFRTbUZZaXJ6aHRPSHZjcWxIamJkYTd1b21pVFNnTVR5dEo4cWxQZ09tWlA=">BANK STANCHART</option>
+                                            <option value="vafr5EYG00bhhPO40LEdKDRldlFYOEtHem1mQm1QQi9qWlpWeUJGbXpnTVM4TTFObHBwMDU3QUg1ZDA9">BANK CAPITAL</option>
+                                            <option value="cmc3s/wzSflQi8DCjdh3WGVtanNLdkJKVDBjdHBjU0tzWTFFeW5PT3pSL1JYalhQMVNRanVVbHBuMkJBRWlYMnpQRThEYld6WmM5UE41dlc=">BANK ANZ INDONESIA</option>
+                                            <option value="FOrbdGetoKqNTZKOTGzu1TFiSTNuSUFiOVNiK3MxU0xHNC9kcnlycXNnTjJrVklNOGRBUEZLZlh4YmM9">BANK BOCI</option>
+                                            <option value="cC/xutBsaPQQLQDR0rV4hGI5RXpTN2I3ODE5V09md2lIUEovUFk1by9qVzdSdy9GOXphNzVLcW0xejBOcUg2K1dXVHZVZ2lrY1I2OFJ5alQ=">BANK BUMI ARTA</option>
+                                            <option value="feYGPjA6uVATgVQSyV51TlpQRDRFd2dhSjNEUzJwV01RbHNsSTZMS0ZiQXNVeVZtamM0RW9NNGJmVVI3Ri9RYlJEWTNCYm5FZnlEdHVhZmE=">BANK ANTAR DAERAH</option>
+                                            <option value="mHbl8R/w3zQFOOb1SW10slpnUU13Q1VBZjhMaXlNbEozbHVsNGFHSFFGSFBzY21RUTdvRHZidFdwSDQ9">RABOBANK</option>
+                                            <option value="gmtT5jd6iNuVX1lRHW876nZhRWpMWW9XWG1Uck5ITHlCY0xFNGRpb1lMSW5LcXNZbU5GSGlwTlhmbHM9">JTRUST BANK</option>
+                                            <option value="6MQNdnwYQhp/ZoGs7P65QGhzd1AwZXRqeUFhd0VFQUhPY3pZUVVPK1NpNjdaMzlOTVZMbS84TldHc0tmN25MV3hTajVxblB3T0ovMDhpU2s=">BANK MAYAPADA</option>
+                                            <option value="Wunr5APR3Gl3YH196xHI9lVNalY1THdtL1JjWGRTUU1lQ3Fwamp4SkZWVmtibmZ1NVhBVkFRZ0hVOEE9">BANK BJB</option>
+                                            <option value="1LMcR85vDBeAKETT49JOgXp2dGdGNzhsSDdVYk4yTHo2M1V5Q3hWalYyOE5iQjRlWlB5RE52RjAyVms9">BANK DKI</option>
+                                            <option value="yqnMycMKjygRtqn8uq4/7jJ4c0dmaWh1bXd0VHJhL05POVp0b3c1RThkTDV6b0ZVNDFjdVA4UWE5OG89">BPD DIY</option>
+                                            <option value="7aYTsfphQyYFPullsIBVIUQ0K0NaRktQYzliRGJaeEQ1UGRMNmxrbTllMU5oMUJyZFZ0ZmVVWURjOUU9">BANK JATENG</option>
+                                            <option value="o0MPioQtTx92BnUF2v4PA0JyQmIwMlJkNUNyUjcrL1lPdHgyVHVNcnd5QWU4UVU5b1VFOW5xSVdEd1k9">BANK JATIM</option>
+                                            <option value="STkNOrAgUk3WDaqtwj1VaFltZ1JYQXRhcnZybVR3aGoweUxnajhEQys2WE8rL1M5ZktWcUJjOW1oNW89">BANK JAMBI</option>
+                                            <option value="92nqfaNquO0jvL6gVC8w3Ew5TWN2ZUdkKzBZWUo0U1RJSW4rYVYzWDJvMjJ2ZndaZFdyVXBWeWxBWmNlQks2R2pQemFkT1R0aFgvS3RrckQ=">BANK ACEH SYARIAH</option>
+                                            <option value="qu7SKmCjffOIh4L1VTvGS1JWaE9MaDVSMG8valFZUVN5TnNSc1B1THE2blBaVHFQNXFqVDFYYmk3c0E9">BPD SUMUT</option>
+                                            <option value="ckbm4KcdsvRzRKBnQ6MvMG5lWmZQdHk1dHhpd2ZoSGVRVjhMM1FKZjNsdG0wdnVDdUVSNjVmU0VuZUk9">BANK NAGARI</option>
+                                            <option value="HjBjOFc9F+d7xJy9b8gsFE5UQzBURzdIbzZLTndYYjJRc3p1VHZzTEpNNUwrbUVHMytDNHRwRTBOZDhSdjVxRU1EclBId3JSWCs3d29hVEZsNkdyYXNyQzkrR01PdFNiY3B6U2tRPT0=">PT BPD Riau Kepri Syariah (Perseroda)</option>
+                                            <option value="WDC0EK2hveTbJROjsDe+TGEvTEFNZitSZlE0emNhMzR6L0JWWHh5bms5QmZYdUtybDIrb1AzSWVLWUZWU3IxTjlZbEZKUmVzUFVLaVhlUVk=">BANK SUMSELBABEL</option>
+                                            <option value="P5dmr6eB4IoGH9tekNa3OVBRekVFbG1wdWd2bEpqd2JmR2QvRHZOUEdES0VHOHpxZzBLSTI3Y0EvejQ9">BANK LAMPUNG</option>
+                                            <option value="meS7ULw0fKaRGN2ygDt3SkVCZDBXQ3o4OVlxVTA3K0NPWktncWN1Vlo1SzlCc21oQTZ0eWUxRVUxTWs9">BANK KALSEL</option>
+                                            <option value="gA2UxiUiRLW7G6k0Aj93LWhQNi83R3RobnY5akRqSXJ3NDBxOXlBSG8yUjJsN0JPc2dGZEVBN3F5WjA9">BANK KALBAR</option>
+                                            <option value="u/3d1E3IdIxZOIIiIV4EMDlTM29LdUJDdUUrc0ozMFRlKzRyZUFFNW1iUENibGYvNmxMWEtVVzRPNkRvaDNVS3NtOHBLdjV0QmtWZXJYblY=">BPD KALTIM KALTARA</option>
+                                            <option value="LlNteHA1aivadxdafdMelEFJKzlabFF1SU4yUjZXM3d6NElEUU94Vm5VamZ5b2d4ZUErbVgwd2dZODA9">BPD KALTENG</option>
+                                            <option value="UuwPGKSEaZZboQNulEfKjmVVSWxyV1kxQ0M0bDJrYVRBcGpCZjJ1MkhKUGcvZW9yeHJMWlFzSXBVcnc3Snp5Ym43NlNOTURyN2YyUlRYNHQ=">BANK SULSELBAR</option>
+                                            <option value="1JUKlCvcpLRxfhAKoHt39U40RU1JOGdGRE9WTlNWVHJTWTdkTFVMOXhvVC9SZDJOaVNHVjdYdU5hd3c9">BPD SULUT</option>
+                                            <option value="yxqirN0IXuhdnrUV6sEan3p6OE5KWUtBdjBwZG1lN1dES2FrQU1Ib3hWV0JBRjE2aXVYbHRTK2Rpekk9">BPD NTB</option>
+                                            <option value="eo4aBLiEFhyfx2S5C4qlaXN0bnZDazU2bUhzN3Y4SWtHVWZkSjZwZ0NJUnVSaHVLaUU1SUU5S2krUWc9">BPD BALI</option>
+                                            <option value="Lf3qAq+S0AJMAoUqJ9jbqnpkSlZXUk5DNVBwMVRiYzRlWDdBc0dHTk9VZnhDb1RzNHNwUEY4MCtIb2s9">BANK NTT</option>
+                                            <option value="lQqU9RFyA2URDLEmcOaGBVJKdzhGd3B4c0pNWFRpRjlKY3JuSndlbGg4MEpUYUVZNysxM2pXMWo0clE9">BANK MALUKU</option>
+                                            <option value="yekJeAcVnIaYFsiE5pBcym9hYjh0eFIzQUdnVjBaUHZDTWhsMEg5SFdEVWkreFlMV25HSkdxZG5BZ0E9">BANK PAPUA</option>
+                                            <option value="94r6vTSWaoPk9wBUxmZgYi92NXlBWVhkcEtsaXdvbng5NE1JTWxLRjU5dXBoQzJnUTc5K3E0M1FKUFM3MmdDNEdLa25rMTRLRGl1NGxvUG8=">BANK BENGKULU</option>
+                                            <option value="nLAZ0UD2o6ZN0bXyv/XBuG9yN1lPUWxkWjEvUVoxWGU4dG1IcXFmenRTTGpsNGpvR05ESHltbGdFcTQ9">BANK SULTENG</option>
+                                            <option value="EMz42RcKdSC8lxcU5jQXNDRHeDVyU3NRZ2dXT1FRbWt4cnJBa1U3RUFtaUVzRXpVakdleWRvNjR5TG89">BANK SULTRA</option>
+                                            <option value="ikmK3w6a1QUl9XbRY3RvU3Jxb2NBUDNpeC9WZGNwdWNMSzV6WjFzdE8vSUFXTG1EZjJMK3hHRnhJNTQ9">BPD BANTEN</option>
+                                            <option value="Du0iGUQqsuJG12UPXJnfQTJVc0xKQ1VuRFVNcnVxU2twaVBwVGppODN6cWtOeUJtK0tCd0YxUlZWZTQ9">BANK BNP</option>
+                                            <option value="6HTCJIku+ib+NL9mq/uz3ENkU0VCZGRYdEt0U0NUNXd5WjBjTWFHTUNFVVhlQVoxcm1sd05LVVBhRld1UGdjb2IrbDZvREZ3b0hhYWpHdWM=">BANK OF INDIA INDONESIA</option>
+                                            <option value="bJ89mT5ngEAjnbxOFOdqeVVtZjNHa3JhejhEVllMWlo2cW5Ma0RRUi90c0dEU3hDbE5NSDlkUEdMSno0aUoydzNaVmdIQjZnbTZ2TVZBZ2I=">BANK MUAMALAT</option>
+                                            <option value="o1jXAdjhT4z43FSd2pDDojZCWlJNYWQyNGYvL3FqR3Y2S0lYVmV1SHgvVE5kaktrMVc5bHFKdk84V1E9">BANK MESTIKA</option>
+                                            <option value="iHhr8petqTuRmg61tx3WYkpMOVNyeXd0bWJGc0xmVmZMSXJ5ZCtiOEwxZEpoS0h4YVpYeXQzQWNES3ZrWVRxZ1VvYWkwQ0xhaDVncnAzNmk=">BANK SHINHAN INDONESIA</option>
+                                            <option value="MwALAJklYxX9ditW/DdEeXJzNm8veGY2b2xvZHo2ckRVeWcwMmREcDVUV09YTkpwSjBFNFBGaGYrb0NLb0szczhyMTFVdTIwaHZIUnhHTDk=">BANK SINARMAS</option>
+                                            <option value="fuYj2RvMP0hHRB9UBVRSo1c3eCtkaTVxeHhCdm1CRzM4cnVoalgyS21hd2lBU0l2WFlzQWNlS0UrM3M9">BANK MASPION</option>
+                                            <option value="C19m5xxyLlEFKuPoRQ3tZHpxNnlPQ3dmNWpLNlBHTlBaWGJIcFdpNjdjRWpPdGRmMVJBSmg3RlErZGc9">BANK GANESHA</option>
+                                            <option value="VE9hQ/FcNPb78VkCkgWFyXZLM0pRZVM1ZkV6dTVRRStvNW1FV1VNV0NqRkEwY3dLdld0blowbzhjVmF2S0czRGpxSkVZM1BzOE9yUWFuU3A=">BANK ICBC INDONESIA</option>
+                                            <option value="YCuMaBaObBc8SCisLIOV9G1wOFVNZVJVQW9CcWl1cDhrUnUzalExZmlFRml6SnNXOXExY3FzSndPblhPUDRFMlR5OVdZQkNMVzI5WXZFakc=">BANK QNB INDONESIA</option>
+                                            <option value="ytGBLsYJnUO3GIpLYa2J4mhaaWcxSmZVbzFMMFZXRlZBbmFlVzRxRTNFVklzWm5LYUZxc2E5Y2lvUlhSKy9neC9yQmR5V1R6MXY0aUhadm4=">BANK WOORI INDONESIA</option>
+                                            <option value="YH9Yx6XIeStoLYLqQnuVeGxndG1kREV5OEhOYklIRWtObU0vVzBrbzNXRi9uMEJ4cG4yZjM5MCt3QUE9">BANK BTPN</option>
+                                            <option value="9j1Ea3EwNIJS+e/qZ63yfXEvaGR2cStTZXZzSU1CUkN6UEUxV3psbFdJWVl2Qlp5ZUt4NkRISFRJWVNvckdZNjJaNXFhenphYkFZOWxHQ04=">BANK VICTORIA SYARIAH</option>
+                                            <option value="2dvHDwZm4lbTReikL0/G/GlSdWd5UkNST0h6cHY2RUpHNk1QS0FaUEw4d015Ulp6VUp0R29odDlTbWtRdWxkZzBuRmI4aU1ZdEhZU2dDSkQ=">BANK BJB SYARIAH</option>
+                                            <option value="edoViVp3OejpCXRi4iClvTNqNmlTcHgrVWxDT2pXUWdha1kxK1h0S2xUby9SeUl3cnVDaWtRWlpvVVU9">BSI</option>
+                                            <option value="Q0hw1zRkhQxPpWCilATjpDVJVkV0bGI0ZXpFSXFObW9rb0hDNTdYQ3h5UElMUmdScFJvN0ZhSTQwYVJSdFI1ZXlEK0dYOWdtMTM0Q1NISWs=">BANK JASA JAKARTA</option>
+                                            <option value="I8l2DWdecUcowt/919UOAllnYUpXb3REMkJNNlFrT3V1TDZJM0tIeVNYdXNzUlJNWWdiQ0QzcjNBKzA9">KEB HANA</option>
+                                            <option value="0t3IIox92WoFe3ENElN880YraEU3Uy9kOXRBZjJGRFE1cVcrVENqZzl3Z21hZGUvS2cwOHcxTXA0YWM9">BANK MNC</option>
+                                            <option value="+x+SbjaWqMVgTIVY4yWMyFlMU21ySlJweDlHSjBiSjFyV3Rid3J4S0tFNHJwdFRHbUdXUHBzbVJEZVZSUm1BK0s4WkJxNlRhMktkdS9UVUw=">Bank Neo Commerce</option>
+                                            <option value="3g/51MffBHZ/v+XFtwOeQXE3amFKdE45a0xrZ0VhOGx0WHcwQ1dQQnNPYzlWanRPUlpzT2FUREdJeEhTNzRobSs1cTR4bm9BSXVGTm41NDQ=">BANK SBI INDONESIA</option>
+                                            <option value="NB4+SxYNOFxYYNhB5sWxnXFHQ0JKaHFpZFFMaTJHcmMwcnBMRmZjQ0V0dUNoQ3JOVU1hUSsvQjFlRWVPbzc3dlBFeWpCYTZhTitoQUpxT00=">BANK DIGITAL BCA</option>
+                                            <option value="0a7w1feLVy3sLrvl8gsy1jh2SC9wUzVCOEszdytPQlJmT28rU3BJNW4xUXp1YW55T1dnT3A0dlZGWlU9">BANK NOBU</option>
+                                            <option value="iKaxAcljC75UjitLM7KmglVXU2s4dGFUOGxOczRoZzV0MEtWdit1a1UyQkhZQWhCNmRZYjIwYklYdnpVVXZCR2xSQlg4K3BMSStNNEczQ3g=">BANK MEGA SYARIAH</option>
+                                            <option value="YS4mAqTJGXRhQSINlHxtbmQvbUdkTjVhOHF4NkVPM2NWeUtOQWtVa2lWck9Cc3NmRDZQc21pUE9EOEJ3VHhGUG5DdENZdDNSY2hEVWM2S2Q=">BANK INA PERDANA</option>
+                                            <option value="SxsfP0wRpX7x3uNRMzrmC290bURzeDQzZ0tZNy9kRUlITkg4WEY0bUthcmNRcFc3ZWszc29sYzEyUnNZOTRBZHJvcUlMSXpWaEhIOHMxNlk=">BANK PANIN SYARIAH</option>
+                                            <option value="/irLuuWOl/rVDHeWzi0jBlFDV3AwazBDMHNFeDJUYUI1emxkdUdXUVJ2VjF0TktHZWlNbUlTZFZOZ2dnektMcFMzd2NoY2pPUy8wQzFIOUg=">BANK PRIMA MASTER</option>
+                                            <option value="eciiDl0chUjpZKnfpmSXB0dKd1ZxMWpEMzdoSjhHNlR5YnMzeXdVaURBYVo3OXpkMnEveXhnRkRVV0gwWU1yRkFWSkdjM25ENEdMOHlXZ0o=">SYARIAH BUKOPIN</option>
+                                            <option value="Nv17bczukgFq49OiOdNlNGE1UXM3MEFhUWpIWFhQbEFJSFlUOHpMVDJhV2FvRGtIcWhsY0NxalNERnovL0M0eEZhVVBReGtYOHhLSHFVWGM=">BANK SAHABAT SAMPOERNA</option>
+                                            <option value="cbNaiis8XvR0Fb/McSIHSiswZ0xTT2VESC9aQ2I3SytzT2hKYW1mNXVwcHE3ZnYxdTlaSkRIanBYczQ9">BANK DINAR</option>
+                                            <option value="sxBf7sQ7GT8su7qX2W7RgytaSzVNQW5EYURWbzRER0xLZ0dGSjNwenI1ckNSSXZ0S1FXYlJrWDJKL3c9">BANK AMAR</option>
+                                            <option value="mTOcLYWdT2nQthNKBrnfeGxUYzdTNXVOV2pTdVBwb3BKNGE2aEdxZVhnWUx4QjNSZ1FncTltcEhiZ3c9">SEABANK</option>
+                                            <option value="zWBZSbyKHfY971Ec/5xGamFBWTU5Uk9XblJjSU1zc2hRL3hYRTE5bEw0M2hVbVVNcHFyRXBCSVNTMm5pTEprTmJRcWt0b0ROejZuS2lvVHY=">BANK BCA SYARIAH</option>
+                                            <option value="rewFM2Rn4C5bDiIEas9YRVM4L1VGbVBuK0lXcGNMdS9QTSsyOEEvNzI3WjV6UktGTXRPWVo3UTg2bDQ9">BANK JAGO</option>
+                                            <option value="fw2vuKQhfWi7lSOeW2a4aEpPVGg4V25sNno4dGVUd3lzYk1abmo1VkhncjVONnpHbm10aDk0L3UrMm89">BTPN SYARIAH</option>
+                                            <option value="KgsMFx7xrzl6KiijfR0AJDljLytqRFZ6Q2tJRHA1bnFTVXZzY3lVMzRCN1g4UkNVbzNOQlFRbGZVVXZ0anVNNThtVHhDM25nTVRJMDU5ZEU=">BANK MULTIARTA SENTOSA</option>
+                                            <option value="0D/GRnTjRICqKKiJ3FBIvTBJNTZmVFFlQ3BxaUNVVlRwUmdHZGMyNDhyTTJocE5RMndqc1QyRVA4NGZ5K1VkV25TdnBSek5KSnordnZqVUg=">BANK HIBANK INDONESIA</option>
+                                            <option value="xe4yd93hQeZ1pZFQbvfXOytPbHIzbXpGQmc3dWlPVFhTcGo0a09Ec2FJU2UvWW5VODN6akJnNmxhYVU9">BANK INDEX</option>
+                                            <option value="NPwapQ/cxzwDoaTsbQJSvktqalZtZEdCSndkZ2VzY0NSSGlKQ05JZVRmQlI3QjgxUkExbU1VNlgxL1U9">BANK MANTAP</option>
+                                            <option value="JaQBqx759jjGG+7AmcJTq0loWVBUejFqTXpPS2g1YnZXN243UEc4alBMK1RTazZ4dU1HY0VCUlhsNkN1ZFBUTzVNQ2R4YXFycm1PVWFkWDI=">BANK VICTORIA</option>
+                                            <option value="ZEc5WNC7yN1Emav4r4kyZ0V4L3N5N0FsdlR5TDl3Qmw4UTk5azhtZWtCTmp5ZzBWWnk2KzJpajd1U1U9">Allo Bank</option>
+                                            <option value="YEXaC1sklzeTAE/ZQfgV225zcnA2QUdXNWh6OXJtK0NuRVpyVVRiR3hZVmZqZ3JJWCtZRDlnbkQ0Vm1nRDR2VGJrK25GRG96aEJIRnZoalY=">Bank BPR Supra</option>
+                                            <option value="GfslxbKP91mpXiofQebmkWpRTllwVmhSNXpoSVk0WnNFcVduK2l6VllmOVVjckdTYU1wdkgxanR1ZmM9">BPR KS</option>
+                                            <option value="SyXZgBIUIRw4Km5z4DrNLitDbXgzNkNQeDc1V3RsRGlEZ0NwL1NreTJYenN0VFVLVXR2RU1FbklsUFU9">FINNET</option>
+                                            <option value="vlHmIMJU6hxxyDCnFcbBCVhxTG1aMllvYnMvT0FnSUVhZ3UxYitLd1BpQi9ibGpWVWViTVc0Q29vd0ZTeUNxdWhEMDNpRll6ZDIxM3hYYjE=">INDOSAT (PAYPRO)</option>
+                                            <option value="jQl8wR9EV55hZtz0rGEofWpQaFZvdlozSHIvenp1N3o2WUh5OTczQTZpV2xoM0RzU2Vlb0tNMEFKOEk9">XL TUNAI</option>
+                                            <option value="L74a8H3+DZ04oE4Cidi7AUdacHlCTVlqYjdUUXBaNGo0N2pMRjhVaHgzWHJPc2dNQTlySjNhdENRNUU9">BANK EKA</option>
+                                            <option value="LW5uDuWyeAGtpvYmPd+cy3NYVVJDZDkxUUs2M0orTnRZbktDVTN4Nk5jQTVmVVJFSmlsVHVNSzBRb0U9">TELKOM</option>
+                                            <option value="fva/oKt+Ro+TgjVhFzWVrk1MbmNna3FyWDR6RlFHa1ZwUW1ZVWdtMWxiWDZrSzdIT3FHb0F1MnZiOWN4SHVabmNMR0dNM0xDYjFTejFUZjI=">TELKOMSEL TCASH</option>
+                                            <option value="fYPyHdZBRSSIN5Qjk4BBeUlFVUp2TnVYaUxFYWRCRnoyV0h2OXhsYmJ1TytTL1lQUHpWWVNnL0hyYVk9">BANK AGRIS</option>
+                                            <option value="Bex99WE5tvUzZD6suRQqvmtqWERpdk1GRWEwNHJOQXpIR0RPNkZ4NWxhRVRNK1VZd1hOVnpnVDVEY2ZlNzFhbUFWK3l0MlpPVHZ1M3pySUQ=">BANK ALADIN SYARIAH</option>
+                                            <option value="ShvO+N8bAYFioljozWRdgGpFTVJQZDNRSWphdjZwZ21hbU05ZENocGF3YkFMcmdtdU90UUNrNU96cEVsb0JOZnMxMzVvTjFCTmtjOTRqZEo=">BANK CTBC INDONESIA</option>
+                                            <option value="VOaIuc+qrKv7IhwLpMi8uSt5cWlDRi9vQlh6eVVXUDYvQkpSWjFyRGR5K3MvN2tDSndyaERjM2lhM0E9">ATMBPlus</option>
+                                            <option value="NjjvtiurxAbHi2Sm4tdoRGEyZXRkM1VubFIxYzNYUVg4dy9iZFJ0UUxtelpqUFBKSElIazFMMk1PWTNJckgxWDNoQ2ovUGVpRGRFMVdrUktvcDJLSk1DUE1FUnlxM1F3VEpwTnBBPT0=">BANK DANAMON INDONESIA SYARIAH</option>
+                                            <option value="C34yxiIwMROaQuokfbva6EFCOHRTYUFzVjFXaVg4R2s0T2RWM0tFMG5FRmdLSGl0djYrNXNJZE1laFoySGJXTzA1cm1qNWkvaHZwVnAwRmE=">BANK CIMB NIAGA SYARIAH</option>
+                                            <option value="Mhm2Et4bhCxIYquUu2Hy4DNrZTBJOGJnbnpzcC9DSDg0RmJaT1hnNXBhWm9SN0JPLzZpUTlxMENVZDQ9">BTN SYARIAH</option>
+                                            <option value="YKpPNFQDsbvhVrWtqOGYukpQN1JyZGhmYzA2OUJsZ3RhMlZmV3hUYmN5RHR1bldzdmFsQXFMS0g2Y205WHNGdVovbkttNUpKWFJ4K1UxWUU=">BANK PERMATA SYARIAH</option>
+                                            <option value="VxfteKFotvL4WQ0Zez9x6W1uRDk4RVJXdkVwcW8wTTZacXZnMjlvVUZXUHNLQ1o2UWVDVEJKcmFOZDZGSCtuTTJTY2liWHdSUXB6YWhqQVJVQjBQOEwrblA0aVRXQ2VrZ3NIbGRRPT0=">KUSTODIAN SENTRAL EFEK INDONESIA</option>
+                                            <option value="EU2mMqDx+BocSJBvQRp1N1kvVEJHOUhsY3lYTkJtQVFCWldHUlpkbmNjclh0SHJLMlN2RGVFNDhmdkRtb05DcFEvL1hSQ2pndDQxVTJDRk0=">BANK JATENG SYARIAH</option>
+                                            <option value="iFDWaRfl2eFjAnz9GIJy2TlSY0MrSEtURm8yakVVcEFqdWljZWh2YW4rOUhvNis3V2E2TjdhdUYwZHRxajd2dGRLY2QyK3AwbzJ4SEc5d1U=">BANK NANO SYARIAH</option>
+                                            <option value="HDb27nftnzBeU6vwJ7rXLHVWcktPT2ljZG9sdGxidDl2NWdqMkFvbnBCYlV2eTNLdjl3Mi9sbVIxRWFSM0krYmRNUmRnTzVCWjlHNkcydHQ=">BANK JATIM SYARIAH</option>
+                                            <option value="soZvrw5gPBVETVzRHtQcTE8rVVVTaGY0UWtwK051L0NaWXU4OTl5UnQ1Mk9MTEFBaVFVYnZSWk5CNW1laE9VT2ZZZWt1ZWl6Z0tDaFNIOWE=">BANK DKI SYARIAH</option>
+                                            <option value="KDfC+OB/HzlhWRbPOmFX2lJ3dXM4dHlyTUtKRG1ZWXBvZ1NDdjcrMmhqQ0ZwTVFvcHdyeE5lS0UyQVhYQW5pS1ZxWXZUZlFlek8xQW4vQ0dRNW13d1Zpa2pkaDc3MkRQMUJjTzNBPT0=">BANK MAYBANK INDONESIA SYARIAH</option>
+                                            <option value="PwJbsHue7mssXiEBXPt/bFlqblZDN2RrL0pESFcxa2xVU0o0VTkwM2s1dVZTOFpocitnRWVHK09abHBhbCtYREZRbUhOMXhaNVZxd1hHQXE=">BANK JAGO SYARIAH</option>
+                                            <option value="gSyGYxAvOwwNoo8TS/Wd3DQzVlNCaExxYWNlcDM2dCtEemw1K2h4WllNQ0JhNEJUZE9DWm9vSnNIaFlyZWtuOEEwcG5FellCbGVuOGNKeGw=">BPD DIY SYARIAH</option>
+                                            <option value="lNJluZtikZNiBJhwgaId6FNyQ2YzcFdNeHBSNXRNUkFWampOT1pSSk1MZzhOTW9RenZQMnpDZGc1M25YakUxbjhOOWJhMTdCNnhYNFFpTDk=">BANK NAGARI SYARIAH</option>
+                                            <option value="5oN1RV8SlthXilcl37e42kpQWVVaekxVMkF4QnBoZVhZdlhrMUJIbUVZSUU2Vjg1azlVRGR4bFNReitGRktjRmp5cXZrUFJKeTdqaGE2NFI=">BANK SUMSELBABEL SYARIAH</option>
+                                            <option value="XYSapbjDjstHHo/+OdIOoitBV25NYTV3OEpDT1FjZEpCODRCaEkyYVRyQm5nQXVCVktJL1RqR3IrSzhXdFpGNlRDNk5tMTczNHVjL1M4MmM=">BANK KALSEL SYARIAH</option>
+                                            <option value="KlJtqsaDCUxqmDbbpiXfbzNCUDJyTjg5TURUWGhTdnNrSzBMSDNqNTZOTDRwU3BZRDdwRG40ckcvaU1KL0dnTmJGVTM5VWRUU0JjbkJwUHc=">BANK KALBAR SYARIAH</option>
+                                            <option value="GcU7/zj7OIbBmotEwkPA41hMMGxKaDNjV0ZWUFJIYks4S1U2eWlzTjJOTWJRVVVFZ243TTJodk5GYm9WWDduaG9GcTlTTlVlM3lnd0Ywdm8=">BPD SUMUT SYARIAH</option>
+                                            <option value="05t6fTy4dbEx3kBY8h7pdDF1VVMzdWEvSjFmeDF3bjB4VFNMbEN1cGpUd0dKdFN0cUZwd01KQWozWmFIS2JqbjdXZU54azFmQXErajB5MlM=">BANK JAMBI SYARIAH</option>
+                                            <option value="nSwP/DdchEgXGQC6ktdT9VZuU245aVhNOFdyOGFJaTF3NHZIaWp1WkFPMWk0L2lhVWIvMmwrcGpva20veXB6bGZZUDEwN1lJdWVyWVM4Tms=">BANK SULSELBAR SYARIAH</option>
+                                            <option value="sZosy+qDWq6q3YAy8BYxuk8zSnFZNTJWei9FMTlNZTBUdlR4VWlvWEpIcHlZOVhHd0EyWlp4M1JHL3JmbnNyV29YRDZrcmsyUHhSNEFzbkc=">BPD KALTIM KALTARA SYARIAH</option>
+                                            <option value="sC5oM6BVDkNtMKh2yljv2FZ5Y0NqWi94UXJKb2sxYXRGY2tFTElzZXo3NzRSdXpVWklGYnFTUW56K09sYUFNdEpFUkxGdEJ3V21tOHhrUEs=">BPD NTB SYARIAH</option>
+                                            <option value="Yo0TRYMaWpFFZP4/uqciAXUySlhIa1hDbWFJUlRlVjJTNEh2RkxDeDFFUU9FWWJKVmtyNzM3M3dtMUN2aGdxM3RDN1FCYVpaa0dFd0RvZm4=">OCBC NISP SYARIAH</option>
+                                            <option value="d16bXhLytCpmm/6eZt14vU5UWGpPdERuZVNVVnJ1SCs4NXJ1cVZpWmpnbWY3dWtPOHpIc1dvMjlIZ0FNUmVzaXdWRXFSakV4Z0toa20zaFA=">Bank Resona Perdania</option>
+                                            <option value="sQcX0AIwD8LxzgaisGTAPE9oOTdka0tjcVVUdWY2K2hucjlFZTMzcFBxRXlkQk5tMjRWcnNqWndQWFFIVWYrOTVWU2FZMTM4NUJ6cE1ZUHU=">Bank IBK Indonesia</option>
+                                            <option value="j/+iZejmdGfe5KXW1noMeEJXa0dZR3ZzdkdDTjNMdE5vRHNCNHAyTFQwNTBQREI5RkJzbVFHN05OSFp6WERKdUUvNUw5SW85SXd0bWRINi8=">Bank China Construction</option>
+                                            <option value="+bZJCrGHHIHMvAzV/Ts4c0RaNFVzZTB2NHZKVkFtWWNLS2k0WjQ4TDFKWnl1NDAvVFJJeFJ4VFBpaU92KzlGSVFiaWRGZlNWMkwwdlZSa2E=">Bank of China</option>
+                                            <option value="izMC9Z0k+Cvu+a631L0nszhwNFdFcVhab1Ywdi84SHVwZzJCTjl4U2VWMU9lUWNSRlM4NStqVms2dHd0TjkxTitINW1Nd1RFbnZvU2E2VlE=">Bank of America NA</option>
+                                            <option value="jGhOMXbRH7tlA2nt7KJP2mtkRTViWEMvOVVaWkwvaGxhMWJlcXJTbGNnVlJ3UG5YRnp6TmtpWTMrQkRmUk44dTZiaGtGRnFNMEFHeHYyUDk=">Bank OKE Indonesia</option>
+                                            <option value="nhyL2eoJAKNtm5hocdBU92RHMUNoWkhkR2gxZGJXZ0oydEtHbit4eDMyS3hYOElNenVrMDdPYjN4eHpsYldaOG9sVlNnTVV5N1R4a3hYZjA=">Bank Mizuho Indonesia</option>
+                                            <option value="e2BcEATolsn6e/2tKfuhJ1VVaHVZV0RueUtIVTZvY1lrQnRkR0h6LzY3dWlFOG1ZV3VYRTQ0enoySTZ6dENSV01sOTBRVlNLNVE2OXVSeUg=">Bank BNP Paribas Indonesia</option>
+                                            <option value="uiTMsB8Va9BvnGj29FhXGXoyczNCS3VHTzhjVXQ5WERPRVJsMys0RVc4MXdZQlhqaWxtWkpNM0hwSGh2aEM2V01STGJYTzYzTFJOTGhEODU=">Bank Panin Dubai Syariah</option>
+                                            <option value="7BLFgSXukDhivFWpp9HAPXFMNzF4RTE3cGxkcVE0VmlZSTNUNEtkaWFWMXJnZU5kYVRKdnRoMFI1NjQ9">Shopeepay</option>
+                                            <option value="kPTh+rsIRDKKTeYWkaPh10QxQ2tiTFFLTml5eFRBME1NbmxqVjFFSWRkL0crVEhxSERWK3V0YTdNbzA9">Dana</option>
+                                            <option value="IPp2QB5LdwTwU34ZbF8+dGh2aHFBcE5laWlJMkFNMUNQd3h2dnNxQVhXT3lGOWlucUcrN1NhZmtQQ3c9">SUPERBANK</option>
+                                            <option value="wuhFUdvs3k4rnYpbR/kkxFF0Y2NKNFBqZ1JTcjNsS0lDU0s3dk1VQjVmeUU0RUVhdXVTWEU5clNoK009">Krom Bank</option>
+                                            <option value="nkhdvldHmua18PRINVzIdUowNFNZYWJWT2ZIa2ZMRFI0M1VRdnVsSUg0cm5tOFZ2S25Od2VPd3JVNXhoMmYzZWlFT1kyVVpvOVRmSUhrT1k=">BANK DEUTSCHE</option>
+                                      </optgroup>
+
+                  <optgroup label="E-Wallet">
+                                            <option value="e/FsJuSdqID+MkmS4zCSNkU1dHJVc3hDQkgrVndnR3NNU1VVakJvVVk2TE9lbmZ4YS95WXZyWXZ4LzQ9">LinkAja (Active)</option>
+                                            <option value="sS/AWaTnhjm66U9P/vbjyUNhY2g3d3NxeXdLVk5ObVhTRElLRDdPUTNLYzB5ZTQycW13WFFxb2xNeUk9">OVO (Active)</option>
+                                            <option value="RRRj9w9nFnIvDwYu8vAcyHoxc2dMNnVaNkpLSGR3bE5pdkY2dytLQWJCZHlUdk90cUdiOUlKTGVNU2M9">ShopeePay (Active)</option>
+                                            <option value="3RMatI3XfkQj5iAAKnfvjnR0eUkzc1Y2Z25pcVhsTTNWU3hiWDB2ekVNRjI1TW9oRTFuVjRwT0tyMFk9">DANA (Active)</option>
+                                            <option value="kGMDFe6LPSaVM8nmsrQCH0lGN0M2d1JFOGlDUTVDNlhoS2lkQ2hLYmsxV2k0NHFXbnc3RTYvOEcxdVk9">i.saku (Active)</option>
+                                            <option value="KgtVgI/JN0VrPz+qhwyU3UlIa1hsWHhMM0RGbHY5dkQyb3NvT0pGdUFudVFUcnltdzJlSE1iQW1XY2FqY2F2Z2dleVBuU2JZdVgyaGNoODA=">Gopay Customer (Active)</option>
+                                            <option value="RlwUvZiBOdEYkEAV9A2+5WZ1cG1kL0I4b29sdWRFN1RBNUFtTjZjbXdGdWRJdWJyT3MzOXg4K1BROWdJeDN3RWVXWHJsQmhaZ3lqVm1UV0I=">Gopay Driver (Active)</option>
+                                      </optgroup>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Nomor Rekening / E-Wallet</label>
+                <input type="text" class="form-control form-control-rounded" placeholder="Nomor Rekening / E-Wallet" autocomplete="off" name="account_number"/>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary btn-pill w-100">Cek</button>
+              </div>
+            </form>
+            <div id="alertFailed" class="alert alert-important alert-danger" role="alert">
+              <div class="alert-icon">
+                <!-- Download SVG icon from http://tabler.io/icons/icon/alert-circle -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
+                  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+                  <path d="M12 8v4"></path>
+                  <path d="M12 16h.01"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="alert-heading">Rekening / E-Wallet tidak ditemukan</h4>
+              </div>
+            </div>
+            <div id="alertSucceed" class="alert alert-important alert-success" role="alert">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler.min.js?1747674014" defer=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+      $('#alertSucceed').hide();
+      $('#alertFailed').hide();
+
+      $('#validateForm').on('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        let accountType = $('select[name="account_type"]').val();
+        let accountNumber = $('input[name="account_number"]').val();
+
+        $.ajax({
+          url: 'https://kedaimutasi.com/cekrekening/home/validate_account',
+          type: 'POST',
+          data: {
+            account_type: accountType,
+            account_number: accountNumber
+          },
+          dataType: 'json',
+          beforeSend: function() {
+            $('#alertSucceed').hide().html('');
+            $('#alertFailed').hide();
+          },
+          success: function(response) {
+            if (response.status === 'success') {
+              let html = `
+                <div class="alert-description">
+                  <ul class="alert-list">
+                    <li><strong>${response.bank}</strong></li>
+                    <li><strong>Account Name:</strong> ${response.account_name}</li>
+                    <li><strong>Account Number:</strong> ${response.account_number}</li>
+                  </ul>
+                </div>
+              `;
+              $('#alertSucceed').html(html).fadeIn();
+            } else {
+              $('#alertFailed').fadeIn();
+            }
+          },
+          error: function(xhr) {
+            $('#alertFailed').fadeIn();
+          }
+        });
+
+      });
+
+      $('.select_account').select2({
+        placeholder: "Pilih Bank / E-Wallet",
+        width: '100%'
+      });
+    });
+    </script>
+  </body>
+</html>
