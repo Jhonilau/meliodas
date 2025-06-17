@@ -36,18 +36,20 @@
     <!-- END CUSTOM FONT -->
   </head>
   <body>
-    <script>
-  if (localStorage.getItem('loggedIn') !== 'true') {
-    window.location.href = 'login.html';
-  }
-</script>
-    <button onclick="logout()" class="btn btn-outline-danger">Logout</button>
-<script>
-  function logout() {
-    localStorage.removeItem('loggedIn');
-    window.location.href = 'login.html';
-  }
-</script>
+   <body>
+  <h1 id="welcome" class="text-2xl font-bold text-center mt-6"></h1>
+
+  <script>
+    const username = localStorage.getItem('username');
+    if (!username) {
+      // ⛔ Belum login, lempar balik ke login
+      window.location.href = "/login.html";
+    } else {
+      // ✅ Sudah login, tampilkan nama
+      document.getElementById('welcome').textContent = `Selamat datang, ${username}!`;
+    }
+  </script>
+</body>
     <!-- BEGIN GLOBAL THEME SCRIPT -->
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
     <!-- END GLOBAL THEME SCRIPT -->
