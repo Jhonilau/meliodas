@@ -19,34 +19,19 @@
         Login
       </button>
     </form>
-    <p id="response" class="mt-4 text-center font-semibold text-red-600"></p>
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const form = new FormData(this);
       const data = Object.fromEntries(form.entries());
 
-      try {
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+      // ✅ Simpan username di localStorage
+      localStorage.setItem('username', data.username);
 
-        const result = await res.json();
-
-        if (res.ok && result.message.startsWith("Selamat datang")) {
-          // ✅ Redirect ke index.html
-          window.location.href = "/index.html";
-        } else {
-          // ❌ Tampilkan pesan error
-          document.getElementById('response').textContent = result.message;
-        }
-      } catch (err) {
-        document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
-      }
+      // ✅ Redirect langsung ke index.html
+      window.location.href = "/index.html";
     });
   </script>
 </body>
