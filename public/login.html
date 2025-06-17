@@ -23,19 +23,24 @@
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = new FormData(this);
-      const data = Object.fromEntries(form.entries());
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = new FormData(this);
+    const data = Object.fromEntries(form.entries());
 
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const result = await res.json();
-      document.getElementById('response').textContent = result.message;
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
-  </script>
+    const result = await res.json();
+
+    if (result.message.startsWith("Selamat datang")) {
+      window.location.href = "/index.html";
+    } else {
+      document.getElementById('response').textContent = result.message;
+    }
+  });
+</script>
 </body>
 </html>
