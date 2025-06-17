@@ -1,66 +1,41 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/tabler@1.0.0-beta16/dist/css/tabler.min.css" rel="stylesheet" />
-    <style>
-      body {
-        background-color: #f5f7fb;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .card {
-        width: 100%;
-        max-width: 400px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <h2 class="h2 text-center mb-4">Login</h2>
-        <form id="loginForm">
-          <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input type="text" id="username" class="form-control" required />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" id="password" class="form-control" required />
-          </div>
-          <div class="form-footer">
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-          </div>
-          <div id="errorMsg" class="text-danger mt-3 text-center" style="display: none;">
-            Username atau password salah.
-          </div>
-        </form>
-      </div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-700 to-purple-800 h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+    <form id="loginForm" class="space-y-4">
+      <input type="text" name="username" placeholder="Username" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <input type="password" name="password" placeholder="Password" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition">
+        Login
+      </button>
+    </form>
+    <p id="response" class="mt-4 text-center font-semibold"></p>
+  </div>
 
-    <script>
-      const users = [
-        { username: "jhonilau", password: "tester123" },
-        { username: "admin", password: "admin123" }
-      ];
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const data = Object.fromEntries(form.entries());
 
-      document.getElementById("loginForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const user = users.find((u) => u.username === username && u.password === password);
-
-        if (user) {
-          localStorage.setItem("loggedIn", "true");
-          window.location.href = "index.html";
-        } else {
-          document.getElementById("errorMsg").style.display = "block";
-        }
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
-    </script>
-  </body>
+      const result = await res.json();
+      document.getElementById('response').textContent = result.message;
+    });
+  </script>
+</body>
 </html>
