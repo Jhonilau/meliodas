@@ -33,6 +33,9 @@ app.post('/check-session', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Server aktif di http://localhost:${PORT}`);
+const HOST = '0.0.0.0';
+
+app.listen(PORT, HOST, () => {
+  console.log(`✅ Server aktif di http://${HOST}:${PORT}`);
 });
+
