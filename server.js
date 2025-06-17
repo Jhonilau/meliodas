@@ -1,6 +1,4 @@
-require('dotenv').config();
 const express = require('express');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -10,48 +8,26 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 const users = [
-  { username: "jhonilau", password: "tester123", email: "jhonilau21@gmail.com" }
+  { username: "jhonilau", password: "tester123" },
+  { username: "admin", password: "admin123" }
 ];
 
-let otpMap = {};
+let sessionMap = {}; // { username: sessionId }
 
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username && u.password === password);
+  if (!user) return res.json({ success: false, message: "Username atau password salah." });
 
-  if (!user) return res.json({ success: false, message: "Username/Password salah!" });
-
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
-  otpMap[username] = otp;
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
-    secure: false,
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS
-    }
-  });
-
-  await transporter.sendMail({
-    from: process.env.MAIL_USER,
-    to: user.email,
-    subject: 'Kode OTP Login Anda',
-    text: `Kode OTP Anda: ${otp}`
-  });
-
-  res.json({ success: true, message: "OTP dikirim ke email pengguna." });
+  const sessionId = Date.now().toString() + Math.random().toString(36).substr(2);
+  sessionMap[username] = sessionId;
+  res.json({ success: true, username, sessionId });
 });
 
-app.post('/verify-otp', (req, res) => {
-  const { username, otp } = req.body;
-  if (otpMap[username] === otp) {
-    delete otpMap[username];
-    res.json({ success: true });
-  } else {
-    res.json({ success: false, message: "OTP salah!" });
-  }
+app.post('/check-session', (req, res) => {
+  const { username, sessionId } = req.body;
+  const valid = sessionMap[username] === sessionId;
+  res.json({ valid });
 });
 
 const PORT = process.env.PORT || 3000;
