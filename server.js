@@ -12,12 +12,14 @@ const users = [
   { username: "admin", password: "admin123" }
 ];
 
-let sessionMap = {}; // { username: sessionId }
+let sessionMap = {}; // username: sessionId
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(u => u.username === username && u.password === password);
-  if (!user) return res.json({ success: false, message: "Username atau password salah." });
+  if (!user) {
+    return res.status(401).json({ success: false, message: "Username atau password salah." });
+  }
 
   const sessionId = Date.now().toString() + Math.random().toString(36).substr(2);
   sessionMap[username] = sessionId;
@@ -31,4 +33,6 @@ app.post('/check-session', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Server aktif di http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server aktif di http://localhost:${PORT}`);
+});
