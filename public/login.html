@@ -19,28 +19,35 @@
         Login
       </button>
     </form>
-    <p id="response" class="mt-4 text-center font-semibold"></p>
+    <p id="response" class="mt-4 text-center font-semibold text-red-600"></p>
   </div>
 
   <script>
-  document.getElementById('loginForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = new FormData(this);
-    const data = Object.fromEntries(form.entries());
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const data = Object.fromEntries(form.entries());
 
-    const res = await fetch('/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok && result.message.startsWith("Selamat datang")) {
+          // ✅ Redirect ke index.html
+          window.location.href = "/index.html";
+        } else {
+          // ❌ Tampilkan pesan error
+          document.getElementById('response').textContent = result.message;
+        }
+      } catch (err) {
+        document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
+      }
     });
-    const result = await res.json();
-
-    if (result.message.startsWith("Selamat datang")) {
-      window.location.href = "/index.html";
-    } else {
-      document.getElementById('response').textContent = result.message;
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
