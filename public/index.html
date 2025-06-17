@@ -43,12 +43,11 @@
       <div class="container container-tight py-4">
         <div class="card card-md">
           <div class="card-body">
-            <!-- Selamat datang + Logout (kotak merah yang kamu maksud) -->
-<div class="flex flex-col items-center justify-center w-full mb-8">
-  <h1 id="welcome" class="text-2xl font-semibold text-gray-800 mb-4"></h1>
+            <div class="mt-6 text-center">
+  <h1 id="welcome" class="text-lg font-semibold text-gray-800 mb-3">Selamat datang!</h1>
   <button
     onclick="logout()"
-    class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-medium transition duration-300"
+    class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-md font-medium shadow transition duration-200"
   >
     Logout
   </button>
@@ -302,5 +301,20 @@
       });
     });
     </script>
+    <script>
+  const username = localStorage.getItem('username');
+  if (!username) {
+    // Jika belum login, tendang balik ke login
+    window.location.href = "/login.html";
+  } else {
+    // Kalau sudah login, tampilkan nama user
+    document.getElementById('welcome').textContent = `Selamat datang, ${username}!`;
+  }
+
+  function logout() {
+    localStorage.removeItem('username');
+    window.location.href = "/login.html";
+  }
+</script>
   </body>
 </html>
