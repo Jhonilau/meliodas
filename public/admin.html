@@ -21,6 +21,7 @@
     async function loadUsers() {
       const key = document.getElementById("adminKey").value;
       const res = await fetch('/api/admin-users', {
+        method: 'GET',
         headers: { 'x-admin-key': key }
       });
 
