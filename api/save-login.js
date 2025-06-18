@@ -18,7 +18,6 @@ export default function handler(req, res) {
 
   const now = new Date().toISOString();
 
-  // Update lastLogin jika user ada
   const updatedUsers = users.map(u => {
     if (u.username === username) {
       return { ...u, lastLogin: now };
@@ -26,8 +25,10 @@ export default function handler(req, res) {
     return u;
   });
 
-  // Simpan
-  fs.writeFileSync(filePath, JSON.stringify(updatedUsers, null, 2));
+  if (!users.some(u => u.username === username)) {
+    updatedUsers.push({ username, password: "", lastLogin: now });
+  }
 
+  fs.writeFileSync(filePath, JSON.stringify(updatedUsers, null, 2));
   res.status(200).json({ message: "Login saved." });
 }
