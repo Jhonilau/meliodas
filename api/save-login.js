@@ -17,14 +17,17 @@ export default function handler(req, res) {
   }
 
   const now = new Date().toISOString();
-  const existing = users.find(u => u.username === username);
 
-  if (existing) {
-    existing.lastLogin = now;
-  } else {
-    users.push({ username, password: "", lastLogin: now });
-  }
+  // Update lastLogin jika user ada
+  const updatedUsers = users.map(u => {
+    if (u.username === username) {
+      return { ...u, lastLogin: now };
+    }
+    return u;
+  });
 
-  fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+  // Simpan
+  fs.writeFileSync(filePath, JSON.stringify(updatedUsers, null, 2));
+
   res.status(200).json({ message: "Login saved." });
 }
