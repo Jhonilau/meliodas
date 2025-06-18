@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <h1 class="text-2xl font-bold mb-4">👨‍💼 Admin Panel</h1>
+
+  <input id="adminKey" type="password" placeholder="Masukkan admin key"
+         class="border px-4 py-2 rounded w-64 mb-4" />
+  <button onclick="loadUsers()"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+    Lihat User
+  </button>
+
+  <div id="userList" class="mt-6 space-y-3"></div>
+
+  <script>
+    async function loadUsers() {
+      const key = document.getElementById("adminKey").value;
+      const res = await fetch('/api/admin-users', {
+        headers: { 'x-admin-key': key }
+      });
+
+      const container = document.getElementById("userList");
+      container.innerHTML = "";
+
+      if (!res.ok) {
+        container.innerHTML = "<p class='text-red-500'>Gagal mengambil data user (unauthorized).</p>";
+        return;
+      }
+
+      const users = await res.json();
+      users.forEach(user => {
+        const time = new Date(user.lastLogin).toLocaleString();
+        container.innerHTML += `
+          <div class="bg-white p-4 rounded shadow text-sm">
+            <strong>${user.username}</strong><br/>
+            Login terakhir: <em>${time}</em>
+          </div>
+        `;
+      });
+    }
+  </script>
+</body>
+</html>
