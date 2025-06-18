@@ -19,19 +19,47 @@
         Login
       </button>
     </form>
+    <p id="response" class="mt-4 text-center text-sm text-red-600 font-semibold"></p>
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
       e.preventDefault();
       const form = new FormData(this);
       const data = Object.fromEntries(form.entries());
 
-      // ✅ Simpan username di localStorage
-      localStorage.setItem('username', data.username);
+      try {
+        // Simulasi kirim login ke API login kalau kamu pakai
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
 
-      // ✅ Redirect langsung ke index.html
-      window.location.href = "/index.html";
+        const result = await res.json();
+
+        if (res.status === 200) {
+          localStorage.setItem('username', data.username);
+
+          // Kirim ke /api/save-login
+          fetch('/api/save-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: data.username })
+          });
+
+          // Redirect berdasarkan user
+          if (data.username === "adminkey") {
+            window.location.href = "/admin.html";
+          } else {
+            window.location.href = "/index.html";
+          }
+        } else {
+          document.getElementById('response').textContent = result.message || "Login gagal.";
+        }
+      } catch (err) {
+        document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
+      }
     });
   </script>
 </body>
