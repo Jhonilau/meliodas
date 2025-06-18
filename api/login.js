@@ -8,8 +8,8 @@ export default function handler(req, res) {
   const users = [
     { username: "jhonilau", password: "tester123" },
     { username: "charlessusanto", password: "aleng123" },
-    { username: "wisnudp", password: "pucukubi123" },
-    { username: "wisnuwd", password: "pucukkangkung123" },
+    { username: "wisnudp", password: "pucukkangkung123" },
+    { username: "wisnuwd", password: "pucukubi123" },
     { username: "wisnulc", password: "bodat123" },
     { username: "adminkey", password: "admin123" }
   ];
