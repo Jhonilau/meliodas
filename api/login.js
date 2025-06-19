@@ -10,6 +10,7 @@ export default function handler(req, res) {
     { username: "charlessusanto", password: "aleng123" },
     { username: "wisnudp", password: "pucukkangkung123" },
     { username: "selanabila", password: "fendi188" },
+    { username: "aleksusanto", password: "sadboy123" },
     { username: "selvieliza", password: "kerangwin" },
     { username: "harisetiadi", password: "bola123" },
     { username: "sitsun", password: "banteng69" },
