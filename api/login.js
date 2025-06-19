@@ -11,6 +11,7 @@ export default function handler(req, res) {
     { username: "wisnudp", password: "pucukkangkung123" },
     { username: "selanabila", password: "fendi188" },
     { username: "selvieliza", password: "kerangwin" },
+    { username: "harisetiadi", password: "bola123" },
     { username: "sitsun", password: "banteng69" },
     { username: "wisnuwd", password: "pucukubi123" },
     { username: "wisnulc", password: "bodat123" },
