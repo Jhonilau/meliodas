@@ -1,4 +1,4 @@
-import redis from '../../lib/redis.js';
+import redis from '../lib/redis.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Only POST' });
