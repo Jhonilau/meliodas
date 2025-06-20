@@ -1,30 +1,33 @@
+import fs from 'fs';
+import path from 'path';
+
 export default function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Metode tidak diizinkan' });
   }
 
   const { username, password } = req.body;
+  const filePath = path.join(process.cwd(), 'api', 'users.json');
 
-  const users = [
-    { username: "jhonilau", password: "tester123" },
-    { username: "charlessusanto", password: "aleng123" },
-    { username: "wisnudp", password: "pucukkangkung123" },
-    { username: "selanabila", password: "fendi188" },
-    { username: "brianadam", password: "cobates123" },
-    { username: "aleksusanto", password: "sadboy123" },
-    { username: "selvieliza", password: "kerangwin" },
-    { username: "harisetiadi", password: "bola123" },
-    { username: "sitsun", password: "banteng69" },
-    { username: "wisnuwd", password: "pucukubi123" },
-    { username: "wisnulc", password: "bodat123" },
-    { username: "singgoy", password: "polo123" },
-    { username: "adminkey", password: "admin123" }
-  ];
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const users = JSON.parse(fileContent);
 
-  const found = users.find(u => u.username === username && u.password === password);
-  if (found) {
+    const userIndex = users.findIndex(u => u.username === username && u.password === password);
+
+    if (userIndex === -1) {
+      return res.status(401).json({ message: 'Username atau password salah.' });
+    }
+
+    if (users[userIndex].active === true) {
+      return res.status(403).json({ message: 'Akun sedang digunakan di perangkat lain.' });
+    }
+
+    users[userIndex].active = true; // tandai login
+
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
     return res.status(200).json({ message: "Login berhasil" });
-  } else {
-    return res.status(401).json({ message: "Username atau password salah." });
+  } catch (err) {
+    return res.status(500).json({ message: 'Server error: ' + err.message });
   }
 }
