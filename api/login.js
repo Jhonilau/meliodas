@@ -1,37 +1,17 @@
-import { setRedis, getRedis } from '../../lib/redis';
+import redis from '../../lib/redis';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Metode tidak diizinkan' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ message: 'Metode tidak diizinkan' });
 
-  try {
-    const { username, password } = req.body;
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const { username, password } = req.body;
+  const users = [{ username: 'jhonilau', password: 'tester123' } /* dst */];
 
-    const users = [
-      { username: 'jhonilau', password: 'tester123' },
-      { username: 'admin', password: 'admin123' },
-    ];
+  const user = users.find(u => u.username === username && u.password === password);
+  if (!user) return res.status(401).json({ message: 'Username atau password salah.' });
 
-    const user = users.find(u => u.username === username && u.password === password);
-    if (!user) {
-      return res.status(401).json({ message: 'Username atau password salah.' });
-    }
+  const active = await redis.get(`active:${username}`);
+  if (active === 'true') return res.status(403).json({ message: 'Akun sedang digunakan di perangkat lain.' });
 
-    const loginStatus = await getRedis(username);
-    console.log('Redis status:', loginStatus);
-
-    if (loginStatus.result === 'true') {
-      return res.status(403).json({ message: 'Akun sedang digunakan di tempat lain.' });
-    }
-
-    await setRedis(username, 'true');
-    return res.status(200).json({ message: 'Login berhasil.' });
-
-  } catch (err) {
-    console.error('LOGIN API ERROR:', err.message);
-    return res.status(500).json({ message: 'Server error: ' + err.message });
-  }
+  await redis.set(`active:${username}`, 'true');
+  return res.status(200).json({ message: 'Login berhasil' });
 }
