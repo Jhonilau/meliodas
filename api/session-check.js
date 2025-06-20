@@ -1,8 +1,11 @@
-import redis from '../../lib/redis';
+import redis from '../../lib/redis.js';
 
 export default async function handler(req, res) {
-  const { username, token } = req.query;
-  const current = await redis.get(`session:${username}`);
-  if (current !== token) return res.status(401).json({ message: 'Session tidak valid' });
-  return res.status(200).json({ message: 'Valid' });
+  if (req.method !== 'POST') return res.status(405).json({ message: 'Only POST' });
+  const { username, token } = req.body;
+  const stored = await redis.get(`session:${username}`);
+  if (stored && stored === token) {
+    return res.status(200).json({ active: true });
+  }
+  res.status(401).json({ active: false });
 }
