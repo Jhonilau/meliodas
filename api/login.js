@@ -9,10 +9,12 @@ export default async function handler(req, res) {
   const user = users.find(u => u.username === username && u.password === password);
   if (!user) return res.status(401).json({ message: 'Username atau password salah.' });
 
-  const existing = getSession(username);
-  if (existing) return res.status(403).json({ message: 'Akun sedang login di tempat lain.' });
+  const existing = await getSession(username);
+  if (existing !== null && existing !== undefined) {
+    return res.status(403).json({ message: 'Akun sedang login di tempat lain.' });
+  }
 
   const token = uuidv4();
-  setSession(username, token);
+  await setSession(username, token);
   return res.status(200).json({ message: 'Login berhasil', token });
 }
