@@ -4,10 +4,12 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { username, token } = req.body;
-  const activeToken = await getRedis(`session:${username}`);
-  if (!activeToken || activeToken !== token) {
+  const sessionKey = `session:${username}`;
+  const stored = await getRedis(sessionKey);
+
+  if (!stored.result || stored.result !== token) {
     return res.status(403).json({ message: 'Sesi tidak valid.' });
   }
 
-  return res.status(200).json({ message: 'Sesi valid.' });
+  res.status(200).json({ message: 'Sesi valid.' });
 }
