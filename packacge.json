@@ -1,4 +1,9 @@
-"dependencies": {
-  "ioredis": "^5.3.2",
-  "uuid": "^9.0.0"
+{
+  "name": "validasirekening",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
 }
