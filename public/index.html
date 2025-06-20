@@ -337,27 +337,19 @@
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-	<script>
+<script>
   async function checkSession() {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    if (!username || !token) return window.location.href = "/login.html";
 
-    if (!username || !token) {
-      window.location.href = '/login.html';
-      return;
-    }
-
-    const res = await fetch(`/api/session-check?username=${username}`);
-    const result = await res.json();
-
-    if (result.token !== token) {
+    const res = await fetch(`/api/session-check?username=${username}&token=${token}`);
+    if (res.status !== 200) {
       localStorage.clear();
-      window.location.href = '/login.html';
+      window.location.href = "/login.html";
     }
   }
-
   checkSession();
 </script>
-
   </body>
 </html>
