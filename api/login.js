@@ -1,9 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 import redis from '../lib/redis.js';
-import users from './users.json' assert { type: 'json' };
+import fs from 'fs';
+import path from 'path';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Metode tidak diizinkan' });
+
+  const filePath = path.join(process.cwd(), 'api', 'users.json');
+  const users = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
   const { username, password } = req.body;
   const user = users.find(u => u.username === username && u.password === password);
