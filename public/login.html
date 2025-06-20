@@ -23,35 +23,51 @@
   </div>
 
   <script>
-  document.getElementById('loginForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = new FormData(this);
-    const data = Object.fromEntries(form.entries());
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const data = Object.fromEntries(form.entries());
 
-    try {
-      const res = await fetch('/api/login', {
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.status === 200) {
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('token', result.token);
+
+          window.location.href = "/index.html";
+        } else {
+          document.getElementById('response').textContent = result.message || "Login gagal.";
+        }
+      } catch (err) {
+        document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
+      }
+    });
+
+    // Cek sesi aktif setiap 5 detik
+    setInterval(async () => {
+      const username = localStorage.getItem('username');
+      const token = localStorage.getItem('token');
+      if (!username || !token) return;
+
+      const res = await fetch('/api/session-check', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ username, token }),
       });
 
-      const result = await res.json();
-      if (res.status === 200) {
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('token', result.token);
-
-        if (data.username === "adminkey") {
-          window.location.href = "/admin.html";
-        } else {
-          window.location.href = "/index.html";
-        }
-      } else {
-        document.getElementById('response').textContent = result.message || "Login gagal.";
+      if (res.status !== 200) {
+        alert("Sesi login kamu digantikan di perangkat lain.");
+        localStorage.clear();
+        window.location.href = "/login.html";
       }
-    } catch (err) {
-      document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
-    }
-  });
-</script>
+    }, 5000);
+  </script>
 </body>
 </html>
