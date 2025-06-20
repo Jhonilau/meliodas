@@ -1,34 +1,42 @@
 import fs from 'fs';
 import path from 'path';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { username } = req.body;
   const filePath = path.join(process.cwd(), 'api', 'users.json');
 
-  let users = [];
   try {
-    users = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  } catch (e) {
-    users = [];
-  }
+    const { username, password } = req.body;
 
-  const now = new Date().toISOString();
-
-  const updatedUsers = users.map(u => {
-    if (u.username === username) {
-      return { ...u, lastLogin: now };
+    if (!username || !password) {
+      return res.status(400).json({ message: 'Username dan password wajib diisi.' });
     }
-    return u;
-  });
 
-  if (!users.some(u => u.username === username)) {
-    updatedUsers.push({ username, password: "", lastLogin: now });
+    const usersRaw = fs.readFileSync(filePath, 'utf-8');
+    let users = [];
+
+    try {
+      users = JSON.parse(usersRaw);
+    } catch (jsonErr) {
+      return res.status(500).json({ message: 'Format users.json tidak valid.' });
+    }
+
+    const exists = users.find((u) => u.username === username);
+    if (exists) {
+      return res.status(409).json({ message: 'Username sudah ada.' });
+    }
+
+    users.push({ username, password, active: false });
+
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2), 'utf-8');
+
+    res.status(200).json({ message: 'User berhasil ditambahkan' });
+
+  } catch (err) {
+    console.error('[SAVE-LOGIN ERROR]', err);
+    res.status(500).json({ message: 'Terjadi kesalahan saat menyimpan user.' });
   }
-
-  fs.writeFileSync(filePath, JSON.stringify(updatedUsers, null, 2));
-  res.status(200).json({ message: "Login saved." });
 }
