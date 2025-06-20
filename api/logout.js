@@ -1,9 +1,9 @@
-import { deleteRedis } from '../lib/redis.js';
+import { delRedis } from '../lib/redis.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { username } = req.body;
-  await deleteRedis(`session:${username}`);
+  await delRedis(`session:${username}`);
   return res.status(200).json({ message: 'Logout berhasil.' });
 }
