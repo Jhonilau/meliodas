@@ -1,4 +1,4 @@
-import redis from '../../lib/redis';
+import { setRedis } from '../../lib/redis';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -6,11 +6,10 @@ export default async function handler(req, res) {
   }
 
   const { username } = req.body;
-
   try {
-    await redis.del(`user:${username}`);
-    return res.status(200).json({ message: 'Logout berhasil' });
+    await setRedis(username, 'false');
+    return res.status(200).json({ message: 'Berhasil logout' });
   } catch (err) {
-    return res.status(500).json({ message: 'Gagal logout.' });
+    return res.status(500).json({ message: 'Gagal logout' });
   }
 }
