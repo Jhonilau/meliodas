@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import redis from '../../lib/redis';
+import redis from '../lib/redis';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Metode tidak diizinkan' });
