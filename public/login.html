@@ -41,13 +41,6 @@
         if (res.status === 200) {
           localStorage.setItem('username', data.username);
 
-          // Kirim ke /api/save-login
-          await fetch('/api/save-login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: data.username })
-          });
-
           // Redirect berdasarkan user
           if (data.username === "adminkey") {
             window.location.href = "/admin.html";
