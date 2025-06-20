@@ -1,17 +1,12 @@
-import fs from 'fs/promises';
-import path from 'path';
-
-const usersPath = path.resolve('api/users.json');
+import { getSession } from '../lib/session.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const { username, token } = req.body;
-  const usersRaw = await fs.readFile(usersPath, 'utf-8');
-  const users = JSON.parse(usersRaw);
-  const user = users.find(u => u.username === username);
+  const currentToken = getSession(username);
 
-  if (!user || user.activeToken !== token) {
+  if (currentToken !== token) {
     return res.status(403).json({ message: 'Sesi tidak valid.' });
   }
 
