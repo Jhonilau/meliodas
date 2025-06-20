@@ -39,7 +39,9 @@
         const result = await res.json();
 
         if (res.status === 200) {
+          const result = await res.json();
           localStorage.setItem('username', data.username);
+          localStorage.setItem('token', result.token);
 
           // Redirect berdasarkan user
           if (data.username === "adminkey") {
