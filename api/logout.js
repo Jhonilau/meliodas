@@ -1,10 +1,11 @@
-import redis from '../../lib/redis';
+import { delRedis } from '../lib/redis';
 
 export default async function handler(req, res) {
-  const { username } = req.body;
-  if (!username)
-    return res.status(400).json({ message: 'Username tidak diberikan.' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Metode tidak diizinkan' });
+  }
 
-  await redis.del(`active:${username}`);
-  res.status(200).json({ message: 'Logout berhasil.' });
+  const { username } = req.body;
+  await delRedis(`active:${username}`);
+  return res.status(200).json({ message: 'Logout berhasil' });
 }
