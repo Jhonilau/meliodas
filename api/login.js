@@ -31,6 +31,6 @@ export default async function handler(req, res) {
     return res.status(403).json({ message: 'Akun sedang digunakan di perangkat lain.' });
   }
 
-  await redis.set(`session:${username}`, token);
+  await redis.set(`session:${username}`, token); // Set session baru
   return res.status(200).json({ message: 'Login berhasil', token });
 }
