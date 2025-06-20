@@ -338,18 +338,27 @@
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
-  async function checkSession() {
+  (async () => {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    if (!username || !token) return window.location.href = "/login.html";
 
-    const res = await fetch(`/api/session-check?username=${username}&token=${token}`);
+    if (!username || !token) {
+      window.location.href = "/login.html";
+      return;
+    }
+
+    const res = await fetch('/api/session-check', {
+      headers: {
+        'x-username': username,
+        'x-token': token
+      }
+    });
+
     if (res.status !== 200) {
       localStorage.clear();
       window.location.href = "/login.html";
     }
-  }
-  checkSession();
+  })();
 </script>
   </body>
 </html>
