@@ -23,39 +23,35 @@
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = new FormData(this);
-      const data = Object.fromEntries(form.entries());
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = new FormData(this);
+    const data = Object.fromEntries(form.entries());
 
-      try {
-        // Simulasi kirim login ke API login kalau kamu pakai
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
 
-        const result = await res.json();
+      const result = await res.json();
+      if (res.status === 200) {
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('token', result.token);
 
-        if (res.status === 200) {
-          const result = await res.json();
-          localStorage.setItem('username', data.username);
-          localStorage.setItem('token', result.token);
-
-          // Redirect berdasarkan user
-          if (data.username === "adminkey") {
-            window.location.href = "/admin.html";
-          } else {
-            window.location.href = "/index.html";
-          }
+        if (data.username === "adminkey") {
+          window.location.href = "/admin.html";
         } else {
-          document.getElementById('response').textContent = result.message || "Login gagal.";
+          window.location.href = "/index.html";
         }
-      } catch (err) {
-        document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
+      } else {
+        document.getElementById('response').textContent = result.message || "Login gagal.";
       }
-    });
-  </script>
+    } catch (err) {
+      document.getElementById('response').textContent = "Terjadi kesalahan koneksi.";
+    }
+  });
+</script>
 </body>
 </html>
