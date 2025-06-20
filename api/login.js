@@ -1,4 +1,4 @@
-import redis from '../../lib/redis';
+import redis from '../lib/redis';
 import { v4 as uuidv4 } from 'uuid';
 
 const users = [
