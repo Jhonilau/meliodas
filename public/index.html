@@ -36,12 +36,22 @@
     <!-- END CUSTOM FONT -->
   </head>
   <body>
-      <button
-  onclick="logout()"
-  class="bg-black hover:bg-gray-800 text-white px-5 py-2 rounded-md font-medium shadow-sm transition duration-200"
->
-  Logout
-</button>
+      <button onclick="logout()" class="...">Logout</button>
+
+<script>
+  function logout() {
+    const username = localStorage.getItem("username");
+
+    fetch("/api/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username })
+    }).then(() => {
+      localStorage.removeItem("username");
+      window.location.href = "/login.html";
+    });
+  }
+</script>
     <!-- BEGIN GLOBAL THEME SCRIPT -->
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
     <!-- END GLOBAL THEME SCRIPT -->
