@@ -337,27 +337,24 @@ function logout() {
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
-  window.onload = async () => {
-    const username = localStorage.getItem('username');
-    const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
+  const token = localStorage.getItem('token');
 
-    if (!username || !token) {
-      window.location.href = "/login.html";
-      return;
-    }
-
+  async function checkSession() {
     const res = await fetch('/api/session-check', {
-      headers: {
-        'x-username': username,
-        'x-token': token
-      }
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, token })
     });
 
     if (res.status !== 200) {
       localStorage.clear();
-      window.location.href = "/login.html";
+      alert("Sesi kamu telah digantikan atau logout.");
+      location.href = '/login.html';
     }
-  })();
+  }
+
+  setInterval(checkSession, 3000);
 </script>
   </body>
 </html>
