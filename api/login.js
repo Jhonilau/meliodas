@@ -10,7 +10,6 @@ export default async function handler(req, res) {
   const users = [
     { username: 'jhonilau', password: 'tester123' },
     { username: 'admin', password: 'admin123' },
-    // dst...
   ];
 
   const user = users.find(u => u.username === username && u.password === password);
@@ -18,11 +17,16 @@ export default async function handler(req, res) {
     return res.status(401).json({ message: 'Username atau password salah.' });
   }
 
-  const loginStatus = await getRedis(username);
-  if (loginStatus.result === 'true') {
-    return res.status(403).json({ message: 'Akun sedang digunakan di tempat lain.' });
-  }
+  try {
+    const loginStatus = await getRedis(username);
+    if (loginStatus.result === 'true') {
+      return res.status(403).json({ message: 'Akun sedang digunakan di tempat lain.' });
+    }
 
-  await setRedis(username, 'true');
-  return res.status(200).json({ message: 'Login berhasil.' });
+    await setRedis(username, 'true');
+    return res.status(200).json({ message: 'Login berhasil.' });
+  } catch (err) {
+    console.error('Redis error:', err);
+    return res.status(500).json({ message: 'Gagal menyimpan status login.' });
+  }
 }
