@@ -1,67 +1,47 @@
-
 <!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.3.0
-* @link https://tabler.io
-* Copyright 2018-2025 The Tabler Authors
-* Copyright 2018-2025 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Bank / E-Wallet Account Checker</title>
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <title>Validasi Bank / E-Wallet </title>
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler.css?1747674012" rel="stylesheet" />
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN PLUGINS STYLES -->
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-flags.css?1747674012" rel="stylesheet" />
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-socials.css?1747674012" rel="stylesheet" />
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-payments.css?1747674012" rel="stylesheet" />
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-vendors.css?1747674012" rel="stylesheet" />
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-marketing.css?1747674012" rel="stylesheet" />
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/dist/css/tabler-themes.css?1747674012" rel="stylesheet" />
-    <!-- END PLUGINS STYLES -->
-    <!-- BEGIN DEMO STYLES -->
     <link href="https://kedaimutasi.com/cekrekening/assets/tabler/preview/css/demo.css?1747674012" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- END DEMO STYLES -->
-    <!-- BEGIN CUSTOM FONT -->
     <style>
       @import url("https://rsms.me/inter/inter.css");
     </style>
-    <!-- END CUSTOM FONT -->
   </head>
   <body>
-<button onclick="logout()">Logout</button>
-
-<script>
-function logout() {
-  const username = localStorage.getItem('username');
-  fetch('/api/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username })
-  }).then(() => {
-    localStorage.clear();
-    window.location.href = "/login.html";
-  });
-}
-</script>
-    <!-- BEGIN GLOBAL THEME SCRIPT -->
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler-theme.min.js?1747674012"></script>
-    <!-- END GLOBAL THEME SCRIPT -->
     <div class="page page-center">
       <div class="container container-tight py-4">
         <div class="card card-md">
           <div class="card-body">
-            <div class="mt-6 text-center">
-  <h1 id="welcome" class="text-lg font-semibold text-gray-800 mb-3">Selamat datang!</h1>
-</div>
-            <h2 class="h2 text-center mb-4">Validasi Rekening Bank & E-Wallet</h2>
+            <h2 class="h2 text-center mb-4">Validasi Bank & E-Wallet</h2>
+<style>
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink {
+  animation: blink 1.2s infinite;
+}
+</style>
+
+<small class="block w-full text-sm font-bold text-red-400 text-center mb-4">
+  Silakan klik 
+  <span class="blink" style="cursor: pointer;" onclick="openPopup()">
+    DISINI
+  </span> 
+  untuk mengetahui info update 💪🔥
+</small>
             <hr>
             <form id="validateForm" class="mb-4" autocomplete="off">
               <div class="mb-3">
@@ -208,14 +188,14 @@ function logout() {
                                             <option value="nhyL2eoJAKNtm5hocdBU92RHMUNoWkhkR2gxZGJXZ0oydEtHbit4eDMyS3hYOElNenVrMDdPYjN4eHpsYldaOG9sVlNnTVV5N1R4a3hYZjA=">Bank Mizuho Indonesia</option>
                                             <option value="e2BcEATolsn6e/2tKfuhJ1VVaHVZV0RueUtIVTZvY1lrQnRkR0h6LzY3dWlFOG1ZV3VYRTQ0enoySTZ6dENSV01sOTBRVlNLNVE2OXVSeUg=">Bank BNP Paribas Indonesia</option>
                                             <option value="uiTMsB8Va9BvnGj29FhXGXoyczNCS3VHTzhjVXQ5WERPRVJsMys0RVc4MXdZQlhqaWxtWkpNM0hwSGh2aEM2V01STGJYTzYzTFJOTGhEODU=">Bank Panin Dubai Syariah</option>
-                                            <option value="7BLFgSXukDhivFWpp9HAPXFMNzF4RTE3cGxkcVE0VmlZSTNUNEtkaWFWMXJnZU5kYVRKdnRoMFI1NjQ9">Shopeepay</option>
-                                            <option value="kPTh+rsIRDKKTeYWkaPh10QxQ2tiTFFLTml5eFRBME1NbmxqVjFFSWRkL0crVEhxSERWK3V0YTdNbzA9">Dana</option>
                                             <option value="IPp2QB5LdwTwU34ZbF8+dGh2aHFBcE5laWlJMkFNMUNQd3h2dnNxQVhXT3lGOWlucUcrN1NhZmtQQ3c9">SUPERBANK</option>
                                             <option value="wuhFUdvs3k4rnYpbR/kkxFF0Y2NKNFBqZ1JTcjNsS0lDU0s3dk1VQjVmeUU0RUVhdXVTWEU5clNoK009">Krom Bank</option>
                                             <option value="nkhdvldHmua18PRINVzIdUowNFNZYWJWT2ZIa2ZMRFI0M1VRdnVsSUg0cm5tOFZ2S25Od2VPd3JVNXhoMmYzZWlFT1kyVVpvOVRmSUhrT1k=">BANK DEUTSCHE</option>
                                       </optgroup>
 
                   <optgroup label="E-Wallet">
+					    <option value="kPTh+rsIRDKKTeYWkaPh10QxQ2tiTFFLTml5eFRBME1NbmxqVjFFSWRkL0crVEhxSERWK3V0YTdNbzA9">Dana</option>
+			  		    <option value="7BLFgSXukDhivFWpp9HAPXFMNzF4RTE3cGxkcVE0VmlZSTNUNEtkaWFWMXJnZU5kYVRKdnRoMFI1NjQ9">Shopeepay</option>
                                             <option value="e/FsJuSdqID+MkmS4zCSNkU1dHJVc3hDQkgrVndnR3NNU1VVakJvVVk2TE9lbmZ4YS95WXZyWXZ4LzQ9">LinkAja (Active)</option>
                                             <option value="sS/AWaTnhjm66U9P/vbjyUNhY2g3d3NxeXdLVk5ObVhTRElLRDdPUTNLYzB5ZTQycW13WFFxb2xNeUk9">OVO (Active)</option>
                                             <option value="RRRj9w9nFnIvDwYu8vAcyHoxc2dMNnVaNkpLSGR3bE5pdkY2dytLQWJCZHlUdk90cUdiOUlKTGVNU2M9">ShopeePay (Active)</option>
@@ -236,7 +216,6 @@ function logout() {
             </form>
             <div id="alertFailed" class="alert alert-important alert-danger" role="alert">
               <div class="alert-icon">
-                <!-- Download SVG icon from http://tabler.io/icons/icon/alert-circle -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
                   <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
                   <path d="M12 8v4"></path>
@@ -256,9 +235,67 @@ function logout() {
 		  <div class="col-6 col-sm-6 col-md-6 col-xl-auto py-3 w-50">
 			<a href="https://trakteer.id/jhonilau" class="btn w-100" target="_blank" role="button">
 			  <span class="icon social social-app-trakteer"></span>
-			  Saya mau traktir kopi
+			  Beli Kopi Starbuck/Amazon
 			</a>
 		  </div>
+<div class="col-6 col-sm-6 col-md-6 col-xl-auto py-3 w-50">
+  <button onclick="openPopup()" class="btn w-100" style="border: 1px solid red; color: red;">
+    INFO UPDATE
+  </button>
+</div>
+
+<div id="overlay" onclick="closePopup()" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;">
+</div>
+
+<div id="popup" style="
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  z-index: 100;
+  max-width: 90%;
+  width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+">
+  <p style="margin-bottom: 10px;">
+    🎉 <strong>Info:</strong> Untuk cek e-wallet <strong>DANA & GOPAY</strong> bisa juga dilakukan melalui <strong>BCA</strong> ya.  
+  Cukup tambahkan kode di depannya.  
+  <br><br>
+  🔢 <strong>Contoh:</strong> <code>3901081396481965</code>  
+  <br><br>
+  ⚠️ <strong>Catatan:</strong> E-wallet tidak akan valid jika statusnya belum <strong>PREMIUM</strong>, <strong>PPATK</strong>, atau <strong>BLOCKED</strong>.  
+  <br><br>
+  💼 Selamat bekerja, tetap semangat, dan tetap fokus!  
+  <br>Terima kasih 🚀
+  </p>
+  <img src="/images/infobca.png" alt="Info Gambar" style="max-width: 100%; border-radius: 10px; margin-bottom: 10px;" />
+  <button onclick="closePopup()" class="btn btn-sm btn-primary mt-2">Tutup</button>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+	</div>
       </div>
     </div>
     <script src="https://kedaimutasi.com/cekrekening/assets/tabler/dist/js/tabler.min.js?1747674014" defer=""></script>
@@ -317,44 +354,24 @@ function logout() {
       });
     });
     </script>
-    <script>
-  const username = localStorage.getItem('username');
-  if (!username) {
-    // Jika belum login, tendang balik ke login
-    window.location.href = "/login.html";
-  } else {
-    // Kalau sudah login, tampilkan nama user
-    document.getElementById('welcome').textContent = `Selamat datang, ${username}!`;
-  }
-
-  function logout() {
-    localStorage.removeItem('username');
-    window.location.href = "/login.html";
-  }
-</script>
-    <script>
+<script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script>
-  const username = localStorage.getItem('username');
-  const token = localStorage.getItem('token');
+	  <script>
+  // Blok klik kanan
+  document.addEventListener("contextmenu", e => e.preventDefault());
 
-  async function checkSession() {
-    const res = await fetch('/api/session-check', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, token })
-    });
-
-    if (res.status !== 200) {
-      localStorage.clear();
-      alert("Sesi kamu telah digantikan atau logout.");
-      location.href = '/login.html';
+  // Blok shortcut DevTools
+  document.onkeydown = function (e) {
+    if (
+      e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.key === "U")
+    ) {
+      return false;
     }
-  }
-
-  setInterval(checkSession, 3000);
+  };
 </script>
   </body>
 </html>
